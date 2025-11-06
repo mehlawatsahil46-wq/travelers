@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Business Strategy </title>
+
+<style>
+:root{
+  --primary:#022744;
+  --accent:#11a37f;
+  --dark:#0b1220;
+  --muted:#000000;
+  --bg:#f6f8fb;
+  --radius:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--dark);line-height:1.6}
+.container{max-width:var(--maxw);margin:0 auto;padding:28px}
+
+/* ===== HEADER ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  z-index: 100;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  width: 100%;
+}
+
+.header-inner {
+  max-width: 1250px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+}
+/* BRAND */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--dark, #222);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.brand span.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--primary, #007bff), var(--accent, #00bcd4));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+/* NAVIGATION */
+.nav {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.nav a {
+  text-decoration: none;
+  color: var(--dark, #333);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.nav a:hover {
+  background: var(--bg, #f6f7fb);
+  color: var(--primary, #007bff);
+}
+
+/* CTA BUTTON */
+.cta {
+  background: linear-gradient(90deg, var(--primary, #007bff), var(--accent, #00bcd4));
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* ===== HAMBURGER MENU (HIDDEN ON DESKTOP) ===== */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 28px;
+  height: 22px;
+  cursor: pointer;
+}
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: var(--dark, #333);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+input[type="checkbox"] {
+    display: none;
+  }
+/* Checkbox (hidden by default, visible only for mobile) */
+#menu-checkbox {
+  display: none !important;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) 
+{
+  .header-inner {
+  
+     display: flex;
+  }
+
+  /* Hide nav by default */
+  .nav {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    background: #ffffff;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-top: 1px solid #eee;
+  }
+
+  /* Hamburger visible */
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Toggle active menu */
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  input[type="checkbox"]:checked ~ .nav {
+    display: flex;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+/* Animate hamburger to “X” */
+  input[type="checkbox"]:checked + .menu-toggle span:nth-child(1) {
+    transform: rotate(45deg) translateY(7px);
+  }
+  input[type="checkbox"]:checked + .menu-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  input[type="checkbox"]:checked + .menu-toggle span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-7px);
+  }
+
+}
+
+/* ===== TABLET RESPONSIVE ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .header-inner {
+    padding: 12px 20px;
+  }
+
+  .brand {
+    font-size: 1.1rem;
+  }
+
+  .nav {
+    gap: 12px;
+  }
+
+  .cta {
+    padding: 6px 12px;
+    font-size: 0.95rem;
+  }
+}
+
+/* HERO */
+.hero-detail{
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:white;
+  text-align:center;
+  padding:100px 24px;
+}
+.hero-detail h1{font-size:42px;margin-bottom:12px}
+.hero-detail p{max-width:700px;margin:auto;font-size:18px;opacity:0.9}
+
+/* DETAIL SECTION */
+.service-detail{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+  background:white;
+  padding:40px;
+  border-radius:var(--radius);
+  box-shadow:0 8px 24px rgba(10,16,30,0.06);
+  margin-top:-60px;
+}
+.service-detail img{
+  width:100%;
+  height:400px;
+  object-fit:cover;
+  border-radius:var(--radius);
+}
+.service-content h2{margin-bottom:16px;font-size:28px}
+.service-content p{color:var(--muted);margin-bottom:16px;font-size:15px; align-content: center;}
+ul{margin-left:20px;margin-bottom:16px}
+ul li{margin-bottom:6px;color:var(--muted)}
+.btn{
+  display:inline-block;
+  background:linear-gradient(90deg,var(--primary),var(--accent));
+  color:white;
+  text-decoration:none;
+  padding:12px 18px;
+  border-radius:8px;
+  font-weight:600;
+  font-size:15px;
+  transition:opacity .3s;
+}
+.btn:hover{opacity:0.9}
+.para{
+    align-items: center;
+}
+/* CTA SECTION */
+.cta-section{
+  text-align:center;
+  padding:80px 24px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:white;
+  border-radius:var(--radius);
+  margin-top:60px;
+}
+.cta-section h2{font-size:32px;margin-bottom:16px}
+.cta-section p{max-width:700px;margin:auto 0 24px;font-size:17px;opacity:0.95;align-items: center;}
+
+/* FOOTER */
+.footer{
+  background:var(--dark);
+  color:white;margin-top:60px;
+}
+.footer-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:40px;
+  padding:60px 24px;
+  max-width:1200px;
+  margin:auto;
+}
+.footer h3{font-size:18px;margin-bottom:16px;color:white}
+.footer p{color:#cbd5e1;font-size:14px;line-height:1.6}
+.footer a{color:#cbd5e1;text-decoration:none;font-size:14px;display:block;margin-bottom:8px;transition:color .3s}
+.footer a:hover{color:var(--accent)}
+.footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:12px;text-decoration:none;color:white;font-weight:700}
+.footer-logo span{width:40px;height:40px;border-radius:8px;background:linear-gradient(90deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:white;font-weight:800}
+.socials{display:flex;gap:12px;margin-top:16px}
+.socials a{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:white;font-size:16px;transition:background .3s}
+.socials a:hover{background:var(--accent)}
+.footer-bottom{background:#0b0f1a;text-align:center;color:#9ca3af;padding:16px;font-size:14px}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-detail h1{font-size:34px}
+  .service-detail{grid-template-columns:1fr;padding:30px}
+  .service-detail img{height:280px}
+}
+@media(max-width:600px){
+  .hero-detail{padding:70px 16px}
+  .container{padding:24px 16px}
+}
+</style>
+</head>
+
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="brand">
+      <span class="logo">CT</span> The Choudhary Travels
+    </a>
+
+    <!-- Mobile menu toggle -->
+    <input type="checkbox" id="menu-btn">
+    <label for="menu-btn" class="menu-toggle">
+      <span></span><span></span><span></span>
+    </label>
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<!-- HERO -->
+<section class="hero-detail">
+  <h1>Staff Buses for Corporate</h1>
+</section>
+
+<!-- SERVICE DETAILS -->
+<section class="container">
+  <div class="service-detail">
+    <img src="images/WhatsApp Image 2025-11-05 at 4.39.53 PM (2).jpeg" alt="STAFF BUS">
+    <div class="service-content">
+      <h2>Staff Buses for Corporate — Reliable Daily Commute Solutions</h2>
+      <p>At Choudhary Travels, we understand that punctuality and comfort are the pillars of an efficient workforce.
+Our Staff Bus Services for Corporates are designed to ensure your employees reach their workplace on time, safely, and comfortably — every single day.
+
+Serving Delhi, Gurugram, Noida, and NCR, we provide customized staff transportation solutions for companies of all sizes — from startups to large enterprises.</p>
+      <ul>
+       ✔️ Regular vehicle maintenance and sanitization<br>
+
+✔️ First-aid kits and fire extinguishers in every bus<br>
+
+✔️ Emergency contact support and backup vehicles<br>
+
+✔️ Comfortable seating with sufficient legroom<br>
+
+✔️ AC/Non-AC options based on preference<br>
+      </ul>
+      <a href="contact.html" class="btn">Book a Consultation</a>
+      
+    </div>
+  </div>
+</section>
+<section class="container">
+  <div>
+    <div>
+       <h2>How It Works</h2>       
+       <ul> 
+        1️⃣ <b>Requirement Discussion — </b>Share your company’s locations, employee strength, and timings.<br>
+        2️⃣ <b>Route & Fleet Planning —</b> We propose optimized routes and suitable buses.<br>
+        3️⃣<b> Deployment — </b>Buses and drivers are assigned with proper documentation and schedules.<br>
+        4️⃣<b> Monitoring & Support — </b>GPS monitoring and real-time assistance ensure smooth daily operations.<br>
+        </ul>
+      </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <a href="#" class="footer-logo"><span>CT</span> The Choudhary Travels</a>
+      <p>Your trusted partner in corporate, school, and outstation bus services across Delhi/NCR</p>
+      <div class="socials">
+        <a href="#"><span>🌐</span></a>
+        <a href="#"><span>💼</span></a>
+        <a href="#"><span>📱</span></a>
+      </div>
+    </div>
+
+    <div>
+      <h3>Quick Links</h3>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="Services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div>
+      <h3>Our Services</h3>
+      <a href="service-staff-buses.html">Staff Buses for Corporate</a>
+      <a href="Bus-on-Hire-for-School.html">Bus on Hire for School</a>
+      <a href="AC-Bus-Hire-for-Outstation.html%20class=">AC Bus Hire for Outstation</a>
+    </div>
+
+    <div>
+      <h3>Contact Info</h3>
+      <p>📍 Jhajjar Rd, near khanti mata mandir, Farukh Nagar, Gurugram, Haryana 122506</p>
+      <p>📞 +91 70658 51475</p>
+      <p>✉️ choudharytravels78@gmail.com</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    &copy; <span id="year"></span> The Choudhary Travels — All Rights Reserved.
+  </div>
+  </footer>
+     
+</body>
+</html>
